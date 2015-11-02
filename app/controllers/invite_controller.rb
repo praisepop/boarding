@@ -76,6 +76,11 @@ class InviteController < ApplicationController
       else
         @message = t(:message_success_pending)
       end
+
+      if ENV["SLACK_HOOK"]
+        notifier = Slack::Notifier.new ENV["SLACK_HOOK"], channel: '#boarding', username: 'praisepop'
+        notifier.ping notifier.escape("#{first_name} #{last_name} <#{email}> just signed up for testing!"), icon_url: "https://s3.amazonaws.com/praisepop/assets/images/prof.png"
+      end
       @type = "success"
     rescue => ex
       if ex.inspect.to_s.include?"EmailExists"
