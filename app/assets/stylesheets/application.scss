@@ -14,3 +14,52 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+$pp_redColor: #E44529;
+
+body {
+  background-color: $pp_redColor;
+  color: white;
+  font-family: "futura-pt",sans-serif;
+  font-weight: 400; //Book
+  font-weight: 500; //Medium
+  font-weight: 700; //Heavy
+}
+
+.btn-red {
+  background-color: darken($pp_redColor, 10);
+  border: 1px solid darken($pp_redColor, 10);
+}
+
+.btn-red:hover {
+  background-color: darken($pp_redColor, 6);
+  border: 1px solid darken($pp_redColor, 6);
+}
+
+label {
+  font-weight: 500;
+}
+
+input {
+  font-weight: 400;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  text-align: center;
+}
+
+h4 {
+  font-size: 4em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+}
+
+h6 {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+img:hover {
+  content: url('popcorn.png');
+}
