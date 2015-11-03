@@ -11,14 +11,15 @@
 
   <% unless @message %>
     <h4 class="" style="margin-bottom: 10px;"><%= "#{@metadata[:title].sub! '!',''}" %></h4>
-    <h6 class="" style="margin-bottom: 30px;">Sign up for early beta access.</h6>
+    <h6 class="" style="margin-bottom: 0px;">Sign up for early beta access.</h6>
+    <h6 class="" style="margin-bottom: 30px;">Now open for <span class='domain'><%= ENV["RESTRICTED_DOMAIN"] %></span></h6>
     <%= form_tag("/submit", method: "post", style: "text-align: left") do %>
       <%= label_tag(:first_name, t(:first_name_label)) %>
       <%= text_field_tag :first_name, '', class: "form-control", placeholder: t(:first_name_placeholder) %><br />
       <%= label_tag(:last_name, t(:last_name_label)) %>
       <%= text_field_tag :last_name, '', class: "form-control", placeholder: t(:last_name_placeholder) %><br />
       <%= label_tag(:email, t(:email_label), class: "required") %>
-      <%= email_field_tag :email, '', class: "form-control", placeholder: t(:email_placeholder) %><br />
+      <%= email_field_tag :email, '', class: "form-control", placeholder: "Your #{ENV["RESTRICTED_DOMAIN"]} email" %><br />
 
       <% if ENV["ITC_TOKEN"] %>
         <% if params[:token] %>
@@ -31,6 +32,7 @@
 
       <br />
       <%= submit_tag t(:get_beta_access), class: 'btn btn-lg btn-primary btn-block btn-red', id: "submit" %>
+      <p>Think your school should be next?  <a href='mailto:admin@trypraisepop.com'>Let us know.</a></p>
     <% end %>
   <% else %>
     <p class="alert alert-<%= @type %>">
